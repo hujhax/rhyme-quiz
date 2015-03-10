@@ -2,7 +2,7 @@ Template.quiz.initialize = function() {
     var rhymeData = Rhymes.find().fetch();
 
     var curRhyme = _.sample(rhymeData);
-    var rhymeSetString = curRhyme && curRhyme.words;
+    var rhymeSetString = curRhyme && curRhyme.words && curRhyme.words.toLowerCase().trim();
 
     if (!rhymeSetString) {
         return;
@@ -47,8 +47,12 @@ Template.quiz.events({
         Session.set("answersMode", true);
     },
     'submit .rhyme-entry': function(event) {
-        var attempt = event.target.attemptedRhyme.value;
+        var attempt = event.target.attemptedRhyme.value.toLowerCase().trim();
         event.target.attemptedRhyme.value = "";
+
+        if (!attempt) {
+            return false;
+        }
 
         if (_.contains(Session.get("otherAnswers"), attempt)) {
             Session.set("otherAnswers", _.without(Session.get("otherAnswers"), attempt));
