@@ -16,6 +16,7 @@ Template.quiz.initialize = function() {
     Session.set("wrongAnswers", []);
     Session.set("otherAnswers", rhymeSet);
     Session.set("rhymeWord", rhymeWord);
+    Session.set("answersMode", false);
 };
 
 Template.quiz.rendered = function() {
@@ -32,12 +33,18 @@ Template.quiz.helpers({
     },
     rhymeWord: function() {
         return Session.get("rhymeWord");
+    },
+    answersMode: function() {
+        return Session.get("answersMode");
     }
 });
 
 Template.quiz.events({
     'click .refresh': function() {
         Template.quiz.initialize();
+    },
+    'click .see-answers': function() {
+        Session.set("answersMode", true);
     },
     'submit .rhyme-entry': function(event) {
         var attempt = event.target.attemptedRhyme.value;

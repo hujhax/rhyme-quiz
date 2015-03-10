@@ -5,11 +5,15 @@
             <h2>Your word is:</h2>
             <h2>{{rhymeWord}}</h2>
             <hr>
-            <form class = "rhyme-entry">
-                <h2>Enter a rhyme!</h2>
-                <input type="text" class="form-control" name="attemptedRhyme"/>
-                <button type="submit">Submit</button>
-            </form>
+            {{#if answersMode}}
+                <h2>See the answers below!</h2>
+            {{else}}
+                <form class = "rhyme-entry">
+                    <h2>Enter a rhyme!</h2>
+                    <input type="text" class="form-control" name="attemptedRhyme"/>
+                    <button type="submit">Submit</button>
+                </form>
+            {{/if}}
             <button class="btn btn-primary refresh">
                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
             </button>
@@ -38,14 +42,17 @@
             <div class="col-md-4 col-sm-12">
                 <h3 class="text-warning">Others</h3>
                 <hr>
-                <ul class="list-group">
-                    {{#each answers.other}}
-                        <li class="list-group-item">{{this}}</li>
-                    {{/each}}
-                </ul>
-                <button class="btn btn-info">
-                    See Others <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                </button>
+                {{#if answersMode}}
+                    <ul class="list-group">
+                        {{#each answers.other}}
+                            <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                {{else}}
+                    <button class="btn btn-info see-answers">
+                        See Others <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                    </button>
+                {{/if}}
             </div>
         </div>
     </div>
