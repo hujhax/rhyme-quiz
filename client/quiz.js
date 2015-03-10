@@ -38,5 +38,21 @@ Template.quiz.helpers({
 Template.quiz.events({
     'click .refresh': function() {
         Template.quiz.initialize();
+    },
+    'submit .rhyme-entry': function(event) {
+        var attempt = event.target.attemptedRhyme.value;
+        event.target.attemptedRhyme.value = "";
+
+        if (_.contains(Session.get("otherAnswers"), attempt)) {
+            Session.set("otherAnswers", _.without(Session.get("otherAnswers"), attempt));
+
+            if (!(_.contains(Session.get("rightAnswers"), attempt))) {
+                Session.set("rightAnswers", Session.get("rightAnswers").concat(attempt));
+            }
+        }
+        else if (!(_.contains(Session.get("wrongAnswers"), attempt))) {
+            Session.set("wrongAnswers", Session.get("wrongAnswers").concat(attempt));
+        }
+        return false;
     }
 });

@@ -5,8 +5,11 @@
             <h2>Your word is:</h2>
             <h2>{{rhymeWord}}</h2>
             <hr>
-            <h2>Enter a rhyme!</h2>
-            <input type="text" class="form-control"/>
+            <form class = "rhyme-entry">
+                <h2>Enter a rhyme!</h2>
+                <input type="text" class="form-control" name="attemptedRhyme"/>
+                <button type="submit">Submit</button>
+            </form>
             <button class="btn btn-primary refresh">
                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
             </button>
