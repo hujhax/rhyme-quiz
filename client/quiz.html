@@ -8,13 +8,15 @@
             {{#if answersMode}}
                 <h2>See the answers below!</h2>
             {{else}}
-                <form class = "rhyme-entry">
-                    <h2>Enter a rhyme!</h2>
-                    <input type="text" class="form-control" name="attemptedRhyme"/>
-                </form>
+                <p>
+                    <form class = "rhyme-entry">
+                        <h2>Enter a rhyme!</h2>
+                        <input type="text" class="form-control" name="attemptedRhyme"/>
+                    </form>
+                </p>
             {{/if}}
-            <button class="btn btn-primary refresh">
-                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+            <button class="btn btn-info refresh">
+                Get a New Word <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
             </button>
         </div>
     </div>
