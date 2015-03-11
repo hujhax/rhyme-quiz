@@ -1,16 +1,18 @@
 <template name="editor">
-    <h2>Rhyme Editor</h2>
+    <div class="container">
+        <h2>Rhyme Editor</h2>
 
-    <h4>Edit some of the existing rhymes...</h4>
-    {{#each rhymes}}
-        {{#autoForm id=uniqueUpdateID type="update" collection=Collections.Rhymes doc=this autosave=true}}
+        <h4>Edit some of the existing rhymes...</h4>
+        {{#each rhymes}}
+            {{#autoForm id=uniqueUpdateID type="update" collection=Collections.Rhymes doc=this autosave=true}}
+                {{> afFormGroup name="words" label=false}}
+            {{/autoForm}}
+        {{/each}}
+
+        <h4>... or add a new set!</h4>
+        {{#autoForm id="addRhymeForm" type="insert" collection=Collections.Rhymes}}
             {{> afFormGroup name="words" label=false}}
+            <button type="submit" class="btn btn-primary">Add New Set</button>
         {{/autoForm}}
-    {{/each}}
-
-    <h4>... or add a new set!</h4>
-    {{#autoForm id="addRhymeForm" type="insert" collection=Collections.Rhymes}}
-        {{> afFormGroup name="words" label=false}}
-        <button type="submit" class="btn btn-primary">Add New Set</button>
-    {{/autoForm}}
+    </div>
 </template>
