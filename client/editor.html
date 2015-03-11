@@ -1,21 +1,27 @@
 <template name="editor">
     <div class="container">
-        <h2>Rhyme Editor</h2>
+        <div class="row">
+            <h2>Rhyme Editor</h2>
 
-        <h4>Edit some of the existing rhymes...</h4>
-        {{#each rhymes}}
-            {{#autoForm id=uniqueUpdateID type="update" collection=Collections.Rhymes doc=this autosave=true}}
-                {{> afFormGroup name="words" label=false}}
-            {{/autoForm}}
+            <h4>Edit some of the existing rhymes...</h4>
+            {{#each rhymes}}
+                {{#autoForm id=uniqueUpdateID type="update" collection=Collections.Rhymes doc=this autosave=true}}
+                    <div class="col-xs-10">
+                        {{> afFormGroup name="words" label=false class="update-edit"}}
+                    </div>
+                {{/autoForm}}
                 {{#quickRemoveButton collection=Collections.Rhymes _id=this._id class="btn btn-md btn-danger update-delete"}}
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            {{/quickRemoveButton}}
-        {{/each}}
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                {{/quickRemoveButton}}
+                <p></p>
+                <br>
+            {{/each}}
 
-        <h4>... or add a new set!</h4>
-        {{#autoForm id="addRhymeForm" type="insert" collection=Collections.Rhymes}}
-            {{> afFormGroup name="words" label=false}}
-            <button type="submit" class="btn btn-primary">Add New Set</button>
-        {{/autoForm}}
+            <h4>... or add a new set!</h4>
+            {{#autoForm id="addRhymeForm" type="insert" collection=Collections.Rhymes}}
+                {{> afFormGroup name="words" label=false}}
+                <button type="submit" class="btn btn-primary">Add New Set</button>
+            {{/autoForm}}
+        </div>
     </div>
 </template>
