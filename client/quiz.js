@@ -8,7 +8,7 @@ Template.quiz.initialize = function() {
         return;
     }
 
-    var rhymeSet = rhymeSetString.split(/\s*,\s*/); // split on commas and trim whitespace
+    var rhymeSet = rhymeSetString.split(/\s*,\s*/).sort(); // split on commas and trim whitespace
     var rhymeWord = _.sample(rhymeSet);
     rhymeSet = _.without(rhymeSet, rhymeWord);
 
