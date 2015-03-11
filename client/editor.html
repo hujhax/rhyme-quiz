@@ -7,7 +7,7 @@
             {{#autoForm id=uniqueUpdateID type="update" collection=Collections.Rhymes doc=this autosave=true}}
                 {{> afFormGroup name="words" label=false}}
             {{/autoForm}}
-            {{#quickRemoveButton collection="TestCollection" _id=this._id class="btn btn-xs btn-danger"}}
+                {{#quickRemoveButton collection=Collections.Rhymes _id=this._id class="btn btn-md btn-danger update-delete"}}
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             {{/quickRemoveButton}}
         {{/each}}
