@@ -61,7 +61,8 @@ Template.quiz.events({
                 Session.set("rightAnswers", Session.get("rightAnswers").concat(attempt));
             }
         }
-        else if (!(_.contains(Session.get("wrongAnswers"), attempt))) {
+        else if ((!(_.contains(Session.get("wrongAnswers"), attempt))) &&
+                 (!(_.contains(Session.get("rightAnswers"), attempt))))  {
             Session.set("wrongAnswers", Session.get("wrongAnswers").concat(attempt));
         }
         return false;
